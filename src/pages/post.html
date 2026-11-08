@@ -1,0 +1,22 @@
+<!--meta {"title": "Blog post", "description": "", "nav": "blog"} -->
+<article class="article">
+  <header class="article-head">
+    <p class="kicker"><a href="blog.html">{{IC:arrow-left}} All posts</a></p>
+    <h1>{{POST_TITLE}}</h1>
+    <p class="dek">{{POST_SUMMARY}}</p>
+    <p class="post-meta">By Letitia · {{POST_DATE}} · {{POST_MINUTES}} min read</p>
+    <ul class="tag-list" aria-label="Topics">{{POST_TAGS}}</ul>
+  </header>
+  {{POST_COVER}}
+  <div class="article-body">
+{{POST_HTML}}
+  </div>
+  <aside class="share" aria-labelledby="share-h">
+    <h2 id="share-h">Found this helpful? Share it with a friend</h2>
+    <p class="share-row">
+      <a href="https://wa.me/?text={{POST_SHARE_TEXT}}" target="_blank" rel="noopener">{{BRAND:whatsapp}}WhatsApp</a>
+      <a href="mailto:?subject={{POST_SHARE_TEXT}}">{{IC:mail}}Email</a>
+    </p>
+  </aside>
+  <nav class="prev-next" aria-label="More posts">{{POST_PREV}}{{POST_NEXT}}</nav>
+</article>

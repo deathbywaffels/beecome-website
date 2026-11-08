@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Two ideas for your new website</title>
+<link rel="icon" href="img/icon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Open+Sans:wght@400;600;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
+<style>
+:root { color-scheme: light; --bg: #fff; --tint: #EEF6F6; --ink: #212121; --ink-soft: #4A4F4F; --teal: #3F6B69; --teal-line: #84B8BB; --aqua: #CDE2E4; --leaf: #607830; --line: #D6E6E7; }
+@media (prefers-color-scheme: dark) { :root { color-scheme: dark; --bg: #142221; --tint: #1A2C2B; --ink: #EEF5F4; --ink-soft: #C6D6D5; --teal: #A9D3D5; --leaf: #B7D38F; --line: #2E4A48; --aqua: #2A4443; } }
+* { box-sizing: border-box; }
+html { font-size: 112.5%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1rem/1.7 "Open Sans", system-ui, sans-serif; }
+.wrap { width: min(1100px, 100% - 32px); margin-inline: auto; padding: 40px 0 70px; }
+header { text-align: center; }
+header img { width: 150px; height: 150px; border-radius: 50%; background: #fff; box-shadow: 0 12px 26px -14px rgba(63,107,105,.6); }
+h1 { font: 700 clamp(1.8rem, 4vw, 2.6rem)/1.25 "Comfortaa", sans-serif; color: var(--teal); margin: 18px 0 6px; }
+.hand { font: 700 1.7rem "Caveat", cursive; color: var(--leaf); margin: 0; }
+.intro { max-width: 40em; margin: 14px auto 0; color: var(--ink-soft); font-size: 1.08rem; }
+.options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; margin-top: 40px; }
+@media (max-width: 760px) { .options { grid-template-columns: minmax(0, 1fr); } }
+.option { display: flex; flex-direction: column; background: var(--tint); border: 2px solid var(--line); border-radius: 24px; text-decoration: none; overflow-wrap: break-word; color: var(--ink); transition: transform .25s, border-color .25s; }
+.option:hover { transform: translateY(-4px); border-color: var(--teal-line); color: var(--ink); }
+.option:focus-visible { outline: 3px solid var(--teal-line); outline-offset: 4px; }
+.option img { width: 100%; aspect-ratio: 1366 / 820; object-fit: cover; object-position: top; border-bottom: 2px solid var(--line); border-radius: 22px 22px 0 0; }
+.option .body { padding: 22px 24px 26px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.option h2 { font: 700 1.5rem "Comfortaa", sans-serif; color: var(--teal); margin: 0; }
+.option p { margin: 0; color: var(--ink-soft); }
+.open { margin-top: auto; padding-top: 14px; font-weight: 700; color: var(--teal); text-decoration: underline; text-underline-offset: 4px; }
+.tips { margin-top: 44px; background: var(--tint); border-radius: 22px; padding: 24px 28px; }
+.tips h2 { font: 700 1.25rem "Comfortaa", sans-serif; color: var(--teal); margin: 0 0 10px; }
+.tips ul { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; }
+@media (prefers-reduced-motion: reduce) { .option { transition: none; } }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <img src="img/logo.png" alt="Beecome Through Play logo">
+    <h1>Two ideas for your new website</h1>
+    <p class="hand">Both in your own colours, with your bee</p>
+    <p class="intro">Each idea shows the top of the home page. Open them both, have a look around, and tell me which one feels more like you. Everything else on the site (the questionnaire, the blog and the contact page) will follow the style you choose.</p>
+  </header>
+
+  <div class="options">
+    <a class="option" href="playroom.html">
+      <img src="img/preview-playroom.jpg" alt="Preview of the Playroom design: your logo framed on an aqua shelf with building blocks">
+      <div class="body">
+        <h2>1. Playroom</h2>
+        <p>Like a calm, tidy playroom: your logo on an aqua shelf with building blocks and toy bins, and each service in its own cubby.</p>
+        <span class="open">Open the Playroom idea →</span>
+      </div>
+    </a>
+    <a class="option" href="honeycomb.html">
+      <img src="img/preview-honeycomb.jpg" alt="Preview of the Honeycomb design: your logo in the centre of a teal honeycomb with your photo">
+      <div class="body">
+        <h2>2. Honeycomb</h2>
+        <p>Built around your bee: your logo in the middle of a honeycomb, your photo beside it, and each service as a cell in the hive.</p>
+        <span class="open">Open the Honeycomb idea →</span>
+      </div>
+    </a>
+  </div>
+
+  <section class="tips" aria-labelledby="t">
+    <h2 id="t">Things to try</h2>
+    <ul>
+      <li>Watch the little bee fly when the page opens. Move your mouse over (or tap) the shelf or honeycomb to make it fly again.</li>
+      <li>Scroll down: a tiny bee flies in next to each heading.</li>
+      <li>Tap <strong>Dark mode</strong> at the top to see the evening version.</li>
+      <li>Open it on your phone too. Both work on small screens.</li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>
