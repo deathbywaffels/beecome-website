@@ -26,6 +26,7 @@ window.SITE = {
 
   // Used by the "write a post" helper page (write.html).
   // Format: "github-user/repository-name"
-  githubRepo: "deathbywaffels/beecome-site",
+  githubRepo: "deathbywaffels/beecome-website",
+  postsFolder: "src/posts",
   githubBranch: "main",
 };

@@ -1,0 +1,93 @@
+<!--meta {"title": "Write a blog post", "description": "Helper page for writing a new blog post.", "nav": "", "robots": "noindex", "scripts": ["https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js", "js/write.js"]} -->
+<section class="page-hero compact" aria-labelledby="ph">
+  <div class="wrap page-hero-row">
+    <div>
+      <p class="kicker">Just for you, Letitia</p>
+      <h1 id="ph">Write a new <span class="hand">blog</span> post</h1>
+      <p class="lead">Write here and watch the preview. When you're happy, press <strong>Publish on GitHub</strong>, then the green <strong>Commit changes</strong> button on GitHub. Your post is live about two minutes later.</p>
+    </div>
+    {{PAGE_ART:edit}}
+  </div>
+</section>
+
+<section class="section" aria-label="Write your post" style="padding-top:1.5rem">
+  <div class="wrap write-grid">
+    <form class="write-form wizard" data-write novalidate>
+      <p class="draft-note" data-write-saved hidden>{{IC:clock}} Your draft from last time is back.</p>
+      <div class="error-summary" tabindex="-1" aria-labelledby="w-err-h" hidden>
+        <h2 id="w-err-h">{{IC:alert}}<span data-w-err-title></span></h2>
+        <ul data-w-err-list></ul>
+      </div>
+
+      <div class="field" data-wreq data-msg="Give your post a title">
+        <label for="w-title">Title</label>
+        <p class="field-error" id="w-title-err"></p>
+        <input id="w-title" type="text" aria-describedby="w-title-err" placeholder="e.g. 5 ways to help your child sleep better">
+      </div>
+      <div class="field">
+        <label for="w-summary">Short summary <span class="opt-word">(optional)</span></label>
+        <p class="hint" id="w-summary-hint">One or two sentences. It's shown on the blog cards.</p>
+        <input id="w-summary" type="text" aria-describedby="w-summary-hint">
+      </div>
+      <div class="field">
+        <label for="w-tags">Topics <span class="opt-word">(optional)</span></label>
+        <p class="hint" id="w-tags-hint">Separate topics with commas. Your topics so far: {{TAG_NAMES}}</p>
+        <input id="w-tags" type="text" aria-describedby="w-tags-hint">
+      </div>
+      <div class="field">
+        <label for="w-image">Cover picture <span class="opt-word">(optional)</span></label>
+        <p class="hint" id="w-image-hint">First upload the picture on GitHub into the <strong>src/posts/images</strong> folder, then type its file name here, for example <strong>sleep.jpg</strong>.</p>
+        <input id="w-image" type="text" aria-describedby="w-image-hint" placeholder="sleep.jpg">
+      </div>
+      <div class="field" data-wreq data-msg="Write your post">
+        <label for="w-body">Your post</label>
+        <div class="write-help" id="w-body-hint">
+          <p>Leave an <strong>empty line</strong> between paragraphs.</p>
+          <ul>
+            <li><code>## Heading</code> makes a heading</li>
+            <li><code>**bold**</code> and <code>*italic*</code></li>
+            <li><code>- item</code> makes a bullet list</li>
+            <li><code>&gt; text</code> makes a quote</li>
+          </ul>
+        </div>
+        <div class="write-toolbar" role="toolbar" aria-label="Formatting" aria-controls="w-body">
+          <button type="button" class="tool-btn" data-wrap="**">Bold</button>
+          <button type="button" class="tool-btn" data-wrap="*">Italic</button>
+          <button type="button" class="tool-btn" data-line="## ">Heading</button>
+          <button type="button" class="tool-btn" data-line="- ">Bullet list</button>
+          <button type="button" class="tool-btn" data-line="&gt; ">Quote</button>
+          <button type="button" class="tool-btn" data-link>Link</button>
+        </div>
+        <p class="field-error" id="w-body-err"></p>
+        <textarea id="w-body" rows="16" aria-describedby="w-body-hint w-body-err"></textarea>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn btn-main" data-publish>Publish on GitHub {{IC:arrow}}</button>
+        <button type="button" class="btn btn-soft" data-copy>Copy post text</button>
+        <button type="button" class="btn btn-quiet" data-clear>Start a new post</button>
+      </div>
+      <p class="write-status" role="status" data-w-status></p>
+    </form>
+
+    <aside class="write-preview" aria-labelledby="pv-h">
+      <h2 id="pv-h" class="kicker">Preview</h2>
+      <div class="scroll-area" tabindex="0" role="region" aria-label="Post preview" data-preview-area>
+        <div data-pv-cover></div>
+        <h3 class="pv-title" data-pv-title>Your title</h3>
+        <div class="article-body" data-pv-body><p class="hint">Your post will appear here as you type.</p></div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="wrap">
+    <section class="steps-help" aria-labelledby="how-h">
+      <h2 id="how-h">How publishing works</h2>
+      <ol>
+        <li>Press <strong>Publish on GitHub</strong>. GitHub opens in a new tab (sign in if it asks).</li>
+        <li>GitHub shows your new post. Press the green <strong>Commit changes…</strong> button, then <strong>Commit changes</strong> again.</li>
+        <li>Wait about two minutes, then open your blog. Your post is there!</li>
+      </ol>
+      <p class="hint">Your writing is saved on this device while you type, so nothing is lost if you close the page.</p>
+    </section>
+  </div>
+</section>

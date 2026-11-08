@@ -1,6 +1,7 @@
-// Builds both full sites from src/ into dist/<theme>/, plus dist/index.html (the "choose a design" page).
+// Builds the Beecome Through Play website (Playroom design) from src/ into dist/.
 //   node scripts/build.mjs
 // Each page in src/pages starts with   <!--meta {"title": "...", "description": "...", "nav": "home"} -->
+// Optional meta keys: "robots" (e.g. "noindex"), "scripts" (extra script files or URLs).
 // and may use these placeholders:
 //   {{HERO_HOME}}          the theme's home-page hero (src/themes/<theme>/hero-home.html)
 //   {{PAGE_ART:icon}}      the theme's small inner-page illustration, with a sprite icon name
@@ -17,7 +18,6 @@ const SRC = join(ROOT, "src");
 const DIST = join(ROOT, "dist");
 const THEMES = {
   playroom: { label: "Playroom", color: "#3F6B69" },
-  honeycomb: { label: "Honeycomb", color: "#3F6B69" },
 };
 
 const read = (p) => readFileSync(p, "utf8");
@@ -165,7 +165,7 @@ const layout = ({ theme, meta, main }) => `<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(meta.title)}${meta.title === SITE.name ? "" : " | " + SITE.name}</title>
-<meta name="description" content="${esc(meta.description || "")}">
+<meta name="description" content="${esc(meta.description || "")}">${meta.robots ? `\n<meta name="robots" content="${esc(meta.robots)}">` : ""}
 <meta name="theme-color" content="${THEMES[theme].color}">
 <link rel="icon" href="img/icon-32.png"><link rel="apple-touch-icon" href="img/icon-180.png">
 <script>/* apply saved colours + text size before first paint (no flash) */
@@ -205,7 +205,7 @@ if (existsSync(DIST)) rmSync(DIST, { recursive: true, force: true });
 
 const pageFiles = readdirSync(join(SRC, "pages")).filter((f) => f.endsWith(".html"));
 for (const theme of Object.keys(THEMES)) {
-  const out = join(DIST, theme);
+  const out = DIST;
   const tdir = join(SRC, "themes", theme);
   copyDir(join(SRC, "img"), join(out, "img"));
   copyDir(join(SRC, "posts", "images"), join(out, "img", "posts"));
@@ -224,6 +224,7 @@ for (const theme of Object.keys(THEMES)) {
     .replace("{{LATEST_POSTS}}", posts.slice(0, 3).map((p) => postCard(p)).join(""))
     .replace("{{ALL_POSTS}}", posts.map((p) => postCard(p, "h2")).join(""))
     .replace("{{TAG_FILTERS}}", ["", ...allTags].map((t) => `<button type="button" aria-pressed="${t === ""}" data-filter="${t ? slugTag(t) : ""}">${t || "All posts"}</button>`).join(""))
+    .replace("{{TAG_NAMES}}", allTags.length ? esc(allTags.join(", ")) : "none yet")
     .replace(/\{\{SITE\.([a-z]+)\}\}/g, (m, k) => esc(SITE[k]))
     .replace(/\{\{IC:([a-z-]+)\}\}/g, (m, n) => ic(n))
     .replace(/\{\{BRAND:([a-z]+)\}\}/g, (m, n) => brand(n));
@@ -253,13 +254,5 @@ for (const theme of Object.keys(THEMES)) {
     }
     writeFileSync(join(out, f), layout({ theme, meta, main: fill(raw.slice(mm[0].length)) }));
   }
-  console.log(`dist/${theme}: ${pageFiles.length - 1} pages + ${posts.length} posts`);
+  console.log(`dist: ${pageFiles.length - 1} pages + ${posts.length} blog posts`);
 }
-
-// The "choose a design" page
-const chooser = read(join(SRC, "chooser.html"));
-mkdirSync(join(DIST, "img"), { recursive: true });
-for (const f of ["logo.png", "icon-32.png"]) copyFileSync(join(SRC, "img", f), join(DIST, "img", f));
-if (existsSync(join(SRC, "chooser-img"))) copyDir(join(SRC, "chooser-img"), join(DIST, "img"));
-writeFileSync(join(DIST, "index.html"), chooser);
-console.log("dist/index.html: chooser");

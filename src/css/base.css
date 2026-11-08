@@ -351,7 +351,8 @@ p { margin: 0 0 1em; text-wrap: pretty; }
 .field > label, fieldset.field > legend { font: 700 1.08rem var(--font-head); color: var(--brand); padding: 0; }
 fieldset.field { border: 0; padding: 0; min-width: 0; }
 .req-word, .opt-word { font: 600 .9rem var(--font-body); color: var(--ink-soft); }
-.hint { color: var(--ink-soft); font-size: .98rem; margin: 0; }
+.hint { color: var(--ink-soft); font-size: .98rem; margin: 0; overflow-wrap: break-word; }
+.hint strong { overflow-wrap: anywhere; }
 .field-error { display: none; margin: 0; color: var(--danger); font-weight: 700; }
 .invalid > .field-error { display: flex; gap: .4rem; }
 .invalid > .field-error::before { content: "⚠"; }
@@ -430,6 +431,30 @@ details[open] > summary.rv-head::after { content: "Hide answers −"; }
 .thanks:focus { outline: none; }
 .thanks-flight { width: min(22rem, 90%); margin: 0 auto 1rem; display: block; overflow: visible; }
 .thanks .actions { justify-content: center; }
+
+/* ── Blog writing helper ── */
+.write-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 2rem; align-items: start; }
+@media (max-width: 60rem) { .write-grid { grid-template-columns: minmax(0, 1fr); } }
+.write-help { background: var(--tint); border-radius: .9rem; padding: .8rem 1rem; font-size: 1rem; }
+.write-help p { margin: 0 0 .3rem; }
+.write-help ul { margin: 0; padding-left: 1.2rem; }
+.write-help code, .article-body code { font: 600 .95em ui-monospace, Consolas, monospace; background: var(--surface); color: var(--brand); padding: .05em .35em; border-radius: .35rem; overflow-wrap: anywhere; }
+.write-toolbar { display: flex; flex-wrap: wrap; gap: .4rem; margin: .4rem 0; }
+.write-status { font-weight: 700; color: var(--brand); min-height: 1.6em; margin-top: 1rem; }
+.write-preview { position: sticky; top: 7rem; }
+.write-preview .kicker { margin-bottom: .6rem; }
+.pv-title { font-size: 1.6rem; }
+@media (max-width: 60rem) { .write-preview { position: static; } }
+/* scroll area (ui-scroll-area): visible thick bar, edge hint only where more content exists */
+.scroll-area { max-height: calc(100vh - 12rem); overflow: auto; overscroll-behavior: contain; padding: 1.2rem 1.4rem; background: var(--surface);
+  border: 2px solid var(--line); border-radius: 1.1rem; scrollbar-width: auto; scrollbar-color: var(--line-teal) var(--tint); }
+.scroll-area::-webkit-scrollbar { width: 14px; } .scroll-area::-webkit-scrollbar-track { background: var(--tint); }
+.scroll-area::-webkit-scrollbar-thumb { background: var(--line-teal); border-radius: 1rem; border: 3px solid var(--tint); }
+.scroll-area:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+@media (max-width: 60rem) { .scroll-area { max-height: none; } }
+.steps-help { margin-top: 2.5rem; padding: 1.4rem 1.6rem; background: var(--tint); border-radius: 1.1rem; }
+.steps-help h2 { font-size: 1.3rem; }
+.steps-help ol { padding-left: 1.3rem; display: grid; gap: .4rem; }
 
 /* ── Reveal once on scroll ── */
 .js-reveal [data-reveal] { opacity: 0; translate: 0 14px; transition: opacity .7s var(--ease), translate .7s var(--ease); }
